@@ -1,3 +1,12 @@
+$primary:       #31545F;
+$secondary:     #AAB9BC;
+$body-bg: #FFFFFF;
+$body-color: #2B2B2B;
+$danger: #b12414;
+$warning: #ffef60;
+
+@import "~bootstrap/scss/bootstrap";
+
 body {
   margin: 0;
   padding: 0;

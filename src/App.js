@@ -1,28 +1,21 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Link, Route, Switch} from "react-router-dom";
+import {Col, Container, Navbar, Row} from "react-bootstrap";
+import Init from "./Pages/Init";
+import Timer from "./Pages/Timer";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
 
+const App = () => (
+  <>
+    <Navbar bg="light" >
+      <Navbar.Brand as={Link} to="/">SKIL Timer</Navbar.Brand>
+    </Navbar>
+    <Container>
+        <Switch>
+            <Route path={"/:id"} component={Timer}/>
+            <Route component={Init}/>
+        </Switch>
+    </Container>
+  </>
+)
 export default App;
