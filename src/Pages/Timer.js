@@ -1,6 +1,6 @@
 import moment from "moment";
 import {Button, Navbar} from "react-bootstrap";
-import React, {useState} from "react";
+import React from "react";
 import StretchedText from "../Components/StretchedText";
 import {withRouter} from "react-router-dom";
 import useDocument from "../Hooks/useDocument";
