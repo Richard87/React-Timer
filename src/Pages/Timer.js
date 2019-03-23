@@ -8,7 +8,7 @@ import useTimer from "../Hooks/useTimer";
 
 const Timer = ({match, history}) => {
     const id = match.params.id
-    const [{startAt: startAtStr, defaultTimeout, remaining}, updateTimer] = useDocument(`timers/${id}`)
+    const [{startAt: startAtStr, defaultTimeout, remaining}, updateTimer] = useDocument(`timers/${id}`, {startAt: "", defaultTimeout: 30, remaining: 30})
     const startAt = startAtStr ? moment(startAtStr) : null;
     const isPaused = !startAt
 
