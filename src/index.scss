@@ -7,9 +7,10 @@ $warning: #ffef60;
 $border-radius: 2px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
-
+$font-family-base: 'Fira Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
 @import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono');
 
 body {
   margin: 0;
