@@ -33,7 +33,7 @@ const useRemoteTime = () => {
             const newNow = moment(now).add(diff, "milliseconds");
             setNow({now: newNow, local: tmp})
 
-        }, 200)
+        }, 100)
 
         return () => {
             unmounting = true
