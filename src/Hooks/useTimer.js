@@ -27,9 +27,9 @@ const formatTime = (startAt, remainingSeconds) => {
     const isAfter = now.isAfter(target)
 
     let remaining = target.diff(now, "seconds");
-    let hours = Math.floor(remaining / 3600)
-    let minutes = Math.floor((remaining - (hours * 3600)) / 60)
-    let seconds = Math.floor(remaining - (hours * 3600) - (minutes * 60))
+    let hours = Math.abs(Math.floor(remaining / 3600))
+    let minutes = Math.abs(Math.floor((remaining - (hours * 3600)) / 60))
+    let seconds = Math.abs(Math.floor(remaining - (hours * 3600) - (minutes * 60)))
 
     if (hours.toString().length === 1)
         hours = "0" + hours.toString()
