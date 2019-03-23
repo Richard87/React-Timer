@@ -11,7 +11,7 @@ const StyledDiv = styled.div`
 `
 
 const StretchedText = ({color, children}) => {
-    return <StyledDiv color={color}>
+    return <StyledDiv className="text-monospace" color={color}>
         <svg viewBox="0 0 85 18">
             <text x="41" y="15">
                 <tspan textAnchor="middle">{children}</tspan>

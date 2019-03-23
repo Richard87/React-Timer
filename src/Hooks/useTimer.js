@@ -4,7 +4,7 @@ import useRemoteTime from "./useRemoteTime";
 
 const useTimer = (startAt, remainingSeconds) => {
     const now = useRemoteTime()
-    const [remaining, setRemaining] = useState(formatTime(moment(), remainingSeconds, now))
+    const [remaining, setRemaining] = useState("00:00:00")
 
     useEffect(() => {
         if (startAt) {
@@ -27,7 +27,7 @@ const formatTime = (startAt, remainingSeconds, now) => {
     const target = moment(startAt).add(remainingSeconds, "seconds")
     const isAfter = now.isAfter(target)
 
-    let remaining = target.diff(now, "seconds");
+    let remaining = Math.abs(target.diff(now, "seconds"));
     let hours = Math.abs(Math.floor(remaining / 3600))
     let minutes = Math.abs(Math.floor((remaining - (hours * 3600)) / 60))
     let seconds = Math.abs(Math.floor(remaining - (hours * 3600) - (minutes * 60)))
@@ -38,7 +38,7 @@ const formatTime = (startAt, remainingSeconds, now) => {
         minutes = "0" + minutes.toString()
     if (seconds.toString().length === 1)
         seconds = "0" + seconds.toString()
-    const prefix = isAfter ? "- " : "";
+    const prefix = isAfter ? "-" : "";
 
     return `${prefix}${hours}:${minutes}:${seconds}`
 }
