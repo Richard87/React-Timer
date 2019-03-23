@@ -13,8 +13,8 @@ const StyledDiv = styled.div`
 const StretchedText = ({color, children}) => {
     return <StyledDiv color={color}>
         <svg viewBox="0 0 85 18">
-            <text x="0" y="15">
-                {children}
+            <text x="41" y="15">
+                <tspan textAnchor="middle">{children}</tspan>
             </text>
         </svg>
     </StyledDiv>

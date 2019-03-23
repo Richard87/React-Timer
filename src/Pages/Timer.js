@@ -6,7 +6,7 @@ import {withRouter} from "react-router-dom";
 import useDocument from "../Hooks/useDocument";
 import useTimer from "../Hooks/useTimer";
 
-const Timer = ({match}) => {
+const Timer = ({match, history}) => {
     const id = match.params.id
     const [{startAt: startAtStr, defaultTimeout, remaining}, updateTimer] = useDocument(`timers/${id}`)
     const startAt = startAtStr ? moment(startAtStr) : null;
@@ -31,11 +31,15 @@ const Timer = ({match}) => {
 
     return <>
         <br/><br/><br/><br/>
-        <StretchedText>{formattedTime}</StretchedText>
+        <StretchedText color="white">{formattedTime}</StretchedText>
 
-        <Navbar bg="light" expand="lg" fixed="bottom" >
-            {isPaused ? <Button variant="primary" onClick={onStart}>Start</Button> : <Button variant="primary" onClick={onPause}>Pause</Button>}
-            {isPaused && <><Button variant="default">Set timer</Button><Button variant="default" onClick={onReset}>Reset</Button></>}
+        <Navbar bg="dark" variant="dark" fixed="bottom" style={{justifyContent: "flex-end"}} >
+            {!isPaused && <Button bg="dark" variant="primary" onClick={onPause}>Pause</Button>}
+            {isPaused && <>
+                <Button bg="dark" variant="primary" onClick={onStart}>Start</Button>
+                <Button bg="dark" variant="secondary" onClick={() => history.push(`/${id}/set`)}>Set timer</Button>
+                <Button bg="dark" variant="secondary" onClick={onReset}>Reset</Button></>
+            }
         </Navbar>
     </>
 }
