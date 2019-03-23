@@ -33,7 +33,7 @@ const SetTimer = ({match, history}) => {
                     Hours:
                 </Form.Label>
                 <Col xs="6" sm="2">
-                    <Form.Control min="0" size="lg" type="number" onChange={e => setTimeout({hours: Number(Math.max(e.target.value, 0)),minutes,seconds})} value={hours}/>
+                    <Form.Control min="0" size="lg" type="number" onChange={e => setTimeout({hours: Math.max(e.target.value, 0),minutes,seconds})} value={hours}/>
                 </Col>
 
 
@@ -41,7 +41,7 @@ const SetTimer = ({match, history}) => {
                     Minutes:
                 </Form.Label>
                 <Col xs="6" sm="2">
-                    <Form.Control size="lg" type="number" onChange={e => setTimeout({hours,minutes: Number(Math.max(e.target.value, 0)),seconds})} value={minutes}/>
+                    <Form.Control size="lg" type="number" onChange={e => setTimeout({hours,minutes: Math.max(e.target.value, 0),seconds})} value={minutes}/>
                 </Col>
 
 
@@ -49,7 +49,7 @@ const SetTimer = ({match, history}) => {
                     Seconds:
                 </Form.Label>
                 <Col xs="6" sm="2">
-                    <Form.Control size="lg" type="number" onChange={e => setTimeout({hours,minutes,seconds: Number(Math.max(e.target.value, 0))})} value={seconds}/>
+                    <Form.Control size="lg" type="number" onChange={e => setTimeout({hours,minutes,seconds: Math.max(e.target.value, 0)})} value={seconds}/>
                 </Col>
             </FormGroup>
 
