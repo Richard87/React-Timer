@@ -6,7 +6,7 @@ import Timer from "./Pages/Timer";
 import SetTimer from "./Pages/SetTimer";
 
 
-const App = ({history}) => (
+const App = () => (
   <>
     <Navbar bg="dark" variant="dark" >
       <Navbar.Brand as={Link} to="/">SKIL Timer</Navbar.Brand>

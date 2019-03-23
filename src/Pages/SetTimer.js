@@ -6,7 +6,7 @@ import useDocument from "../Hooks/useDocument";
 
 const SetTimer = ({match, history}) => {
     const id = match.params.id
-    const [{defaultTimeout = 0}, updateTimer] = useDocument(`timers/${id}`)
+    const [{defaultTimeout = 0}, updateTimer] = useDocument(`timers/${id}`, {startAt: "", defaultTimeout: 30, remaining: 30})
     const [{hours,minutes,seconds}, setTimeout] = useState({hours: 0,minutes: 0,seconds: 0})
 
     useEffect(() => {
@@ -17,7 +17,6 @@ const SetTimer = ({match, history}) => {
     }, [id, defaultTimeout])
 
     const onSubmit = () => {
-        console.log({hours,minutes,seconds})
         const newTimeout = (hours * 3600) + (minutes * 60) + seconds
         updateTimer({defaultTimeout: newTimeout, remaining: newTimeout, startAt: ""})
         history.push(`/${id}`)
@@ -34,7 +33,7 @@ const SetTimer = ({match, history}) => {
                     Hours:
                 </Form.Label>
                 <Col xs="6" sm="2">
-                    <Form.Control size="lg" type="number" onChange={e => setTimeout({hours: e.target.value,minutes,seconds})} value={hours}/>
+                    <Form.Control min="0" size="lg" type="number" onChange={e => setTimeout({hours: Number(Math.max(e.target.value, 0)),minutes,seconds})} value={hours}/>
                 </Col>
 
 
@@ -42,7 +41,7 @@ const SetTimer = ({match, history}) => {
                     Minutes:
                 </Form.Label>
                 <Col xs="6" sm="2">
-                    <Form.Control size="lg" type="number" onChange={e => setTimeout({hours,minutes: e.target.value,seconds})} value={minutes}/>
+                    <Form.Control size="lg" type="number" onChange={e => setTimeout({hours,minutes: Number(Math.max(e.target.value, 0)),seconds})} value={minutes}/>
                 </Col>
 
 
@@ -50,7 +49,7 @@ const SetTimer = ({match, history}) => {
                     Seconds:
                 </Form.Label>
                 <Col xs="6" sm="2">
-                    <Form.Control size="lg" type="number" onChange={e => setTimeout({hours,minutes,seconds: e.target.value})} value={seconds}/>
+                    <Form.Control size="lg" type="number" onChange={e => setTimeout({hours,minutes,seconds: Number(Math.max(e.target.value, 0))})} value={seconds}/>
                 </Col>
             </FormGroup>
 

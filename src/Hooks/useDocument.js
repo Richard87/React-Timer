@@ -1,14 +1,18 @@
 import {useEffect, useState} from "react";
-import {firestore} from "firebase";
+import app from "firebase/app";
+import 'firebase/firestore';
 
 const useDocument = (path, defaults) => {
     const [document, setDocument] = useState(defaults)
-    const docRef = firestore().doc(path)
+    const docRef = app.firestore().doc(path)
 
     useEffect(() => {
         const unsubscribe = docRef.onSnapshot(snapshot => {
             if (snapshot.exists)
                 setDocument(snapshot.data())
+            else {
+                docRef.set(defaults)
+            }
         })
 
         return () => unsubscribe()

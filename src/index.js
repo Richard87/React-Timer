@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import {BrowserRouter} from "react-router-dom"
-import {initializeApp} from "firebase/app";
+import app from "firebase/app";
 const firebaseConfig = {
     apiKey: "AIzaSyBsunrLS8iuJMC4MxOuFsZQtCtTYwicXc0",
     authDomain: "timer-4ec33.firebaseapp.com",
@@ -12,7 +12,7 @@ const firebaseConfig = {
     storageBucket: "timer-4ec33.appspot.com",
     messagingSenderId: "1070011963023"
 }
-initializeApp(firebaseConfig)
+app.initializeApp(firebaseConfig)
 
 ReactDOM.render(<BrowserRouter>
     <App/>

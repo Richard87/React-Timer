@@ -24,10 +24,12 @@ const formatTime = (startAt, remainingSeconds) => {
 
     const target = moment(startAt).add(remainingSeconds, "seconds")
     const now = moment()
-    let hours = Math.abs(target.diff(now, "hours"))
-    let minutes = Math.abs(target.diff(now, "minutes"))
-    let seconds = Math.abs(target.diff(now, "seconds")) % 60
-    let isAfter = now.isAfter(target)
+    const isAfter = now.isAfter(target)
+
+    let remaining = target.diff(now, "seconds");
+    let hours = Math.floor(remaining / 3600)
+    let minutes = Math.floor((remaining - (hours * 3600)) / 60)
+    let seconds = Math.floor(remaining - (hours * 3600) - (minutes * 60))
 
     if (hours.toString().length === 1)
         hours = "0" + hours.toString()

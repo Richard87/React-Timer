@@ -13,7 +13,7 @@ const Init = ({history}) => {
     return <>
         <Form.Group controlId="formBasicEmail">
             <Form.Label>Timer kode</Form.Label>
-            <Form.Control ref={controlRef} type="text" placeholder="abCde" defaultValue="skil" />
+            <Form.Control ref={controlRef} type="text" placeholder="abCde" />
             <Form.Text>Enter any code to see a timer, or create a new...</Form.Text>
         </Form.Group>
         <Button onClick={seeTimer}>Open timer</Button>
