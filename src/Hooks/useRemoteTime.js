@@ -6,7 +6,7 @@ const useRemoteTime = () => {
 
     useEffect(() => {
         let unmounting = false
-        const fetchId = setInterval(() => {
+        const updateRemoteTime = () => {
             fetch("/index.html", {method: 'head'})
                 .then(response => {
                     let header = response.headers.get("x-timer");
@@ -22,7 +22,9 @@ const useRemoteTime = () => {
                     if (!unmounting)
                         setNow({now: tmp, local: moment(tmp)})
                 })
-        }, 10000)
+        };
+        const fetchId = setInterval(updateRemoteTime, 10000)
+        updateRemoteTime()
 
         const timeId = setInterval(() => {
             const tmp = moment()
