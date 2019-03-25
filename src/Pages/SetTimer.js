@@ -26,9 +26,8 @@ const SetTimer = ({match, history}) => {
     }
 
     return (
-        <Form>
-            <br/><br/><br/><br/>
-            <FormGroup as={Row}>
+        <Form >
+            <FormGroup as={Row} style={{marginTop: "1em"}}>
                 <Form.Label size="lg" column xs="6" sm="2">
                     Hours:
                 </Form.Label>

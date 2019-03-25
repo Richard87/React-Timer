@@ -7,16 +7,16 @@ const Init = ({history}) => {
     const controlRef = useRef()
 
     const seeTimer = () => {
-        history.push("/" + controlRef.current.value)
+        history.push("/" + controlRef.current.value.toString().toLowerCase())
     }
 
-    return <>
+    return <div style={{marginTop: "1em"}}>
         <Form.Group controlId="formBasicEmail">
             <Form.Label>Timer kode</Form.Label>
             <Form.Control ref={controlRef} type="text" placeholder="abCde" />
             <Form.Text>Enter any code to see a timer, or create a new...</Form.Text>
         </Form.Group>
         <Button onClick={seeTimer}>Open timer</Button>
-    </>
+    </div>
 }
 export default withRouter(Init)

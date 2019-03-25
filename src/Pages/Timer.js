@@ -40,9 +40,8 @@ const Timer = ({match, history}) => {
         }
     }
 
-    return <>
-        <br/><br/><br/><br/>
-        <StretchedText color="white">{formattedTime}</StretchedText>
+    return <div style={{display:"flex", justifyContent: "space-around",flexDirection: "column",height: "100%"}}>
+        <StretchedText color="white" style={{marginTop: "-2em"}}>{formattedTime}</StretchedText>
 
         <Navbar bg="dark" variant="dark" fixed="bottom" style={{justifyContent: "flex-end"}} >
             {!isPaused && <>
@@ -55,7 +54,7 @@ const Timer = ({match, history}) => {
                 <Button bg="dark" variant="secondary" onClick={onReset}>Reset</Button></>
             }
         </Navbar>
-    </>
+    </div>
 }
 export default withRouter(Timer)
 

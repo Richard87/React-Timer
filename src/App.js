@@ -11,7 +11,7 @@ const App = () => (
     <Navbar bg="dark" variant="dark" >
       <Navbar.Brand as={Link} to="/">SKIL Timer</Navbar.Brand>
     </Navbar>
-    <Container>
+    <Container style={{flex: 1}}>
         <Switch>
             <Route path={"/:id/set"} component={SetTimer}/>
             <Route path={"/:id"} component={Timer}/>
