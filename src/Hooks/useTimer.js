@@ -1,19 +1,18 @@
 import {useEffect, useState} from "react";
 import moment from "moment";
-import useRemoteTime from "./useRemoteTime";
 
 const useTimer = (startAt, remainingSeconds) => {
-    const now = useRemoteTime()
+    const now = moment()
     const [remaining, setRemaining] = useState("00:00:00")
 
     useEffect(() => {
         if (startAt) {
             const interval = setInterval(() => {
-                setRemaining(formatTime(startAt, remainingSeconds, now))
+                setRemaining(formatTime(startAt, remainingSeconds))
             }, 100)
             return () => clearInterval(interval)
         } else {
-            setRemaining(formatTime(moment(), remainingSeconds, now))
+            setRemaining(formatTime(moment(), remainingSeconds))
         }
     }, [startAt, remainingSeconds])
 
@@ -22,8 +21,8 @@ const useTimer = (startAt, remainingSeconds) => {
 export default useTimer
 
 
-const formatTime = (startAt, remainingSeconds, now) => {
-
+const formatTime = (startAt, remainingSeconds) => {
+    const now = moment()
     const target = moment(startAt).add(remainingSeconds, "seconds")
     const isAfter = now.isAfter(target)
 
